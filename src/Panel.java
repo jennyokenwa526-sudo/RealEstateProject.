@@ -30,18 +30,29 @@ public class Panel extends RealEstate implements PanelInterface {
 
     @Override
     public String toString() {
-        return String.format("Panel [city=%s, price/sqm=%.0f, sqm=%d, rooms=%.1f, genre=%s, floor=%d, insulated=%b, totalPrice=%d, avgSqmPerRoom=%.2f]",
-                city, price, sqm, numberOfRooms, genre, floor, isInsulated, getTotalPrice(), averageSqmPerRoom());
+        return String.format(
+                "Panel [city=%s, price/sqm=%.0f, sqm=%d, rooms=%.1f, genre=%s, floor=%d, insulated=%b, totalPrice=%d, avgSqmPerRoom=%.2f]",
+                getCity(),           //  use getter
+                getPrice(),          //  use getter
+                getSqm(),            //  use getter
+                getNumberOfRooms(),  //  use getter
+                getGenre(),          //  use getter
+                floor,
+                isInsulated,
+                getTotalPrice(),
+                averageSqmPerRoom()
+        );
     }
 
     @Override
     public boolean hasSameAmount(RealEstate other) {
+        //  this is fine, since both use public methods
         return this.getTotalPrice() == other.getTotalPrice();
     }
 
     @Override
     public int roomprice() {
-        // Price per room (ignores city/floor/insulation modifiers)
-        return (int)((price * sqm) / numberOfRooms);
+        //  use getters instead of direct private fields
+        return (int) ((getPrice() * getSqm()) / getNumberOfRooms());
     }
 }

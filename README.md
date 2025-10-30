@@ -71,7 +71,7 @@ RealEstateProject/
 
 ## 
 How to Compile Manually (optional)
-
+JavaDoc was generated
 If you prefer using the terminal:
 ```bash
 javac src/*.java
